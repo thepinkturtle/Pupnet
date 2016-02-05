@@ -6,6 +6,7 @@
 
 import spidev
 import time
+import os
 
 # Establish SPI device on Bus 0, Device 0
 spi = spidev.SpiDev()
@@ -26,7 +27,9 @@ def getAdc (channel):
 	# Print out 0 - 1023 value and percentage
 	if (adcOut > 700 ):
 		print("ADC output: {0:4d}	Percentage: {1:3}%".format( adcOut, percent))
+		os.system("fswebcam -r 1280x720 /home/pi/Pictures/pupnettest.jpg")	
 		time.sleep(0.1)
-
+		os.system("mpack -s 'WOOF!' /home/pi/Pictures/Pupnet.jpg cheeriereptilian@gmail.com")
+		
 while True:
 	getAdc(0)
