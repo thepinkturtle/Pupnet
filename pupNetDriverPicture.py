@@ -29,8 +29,7 @@ def getAdc (channel):
 		print("ADC output: {0:4d}	Percentage: {1:3}%".format( adcOut, percent))
 		os.system("fswebcam -r 640x480 /home/pi/Pictures/Pupnet.jpg")	
 		time.sleep(0.1)
-#		os.system("mpack -s 'WOOF!' /home/pi/Pictures/Pupnet.jpg cheeriereptilian@gmail.com")
-		os.system("mpack -s 'WOOF!' /home/pi/Pictures/Pupnet.jpg 2537320033@messaging.sprintpcs.com")
+		os.system("mpack -s 'WOOF!' /home/pi/Pictures/Pupnet.jpg cheeriereptilian@gmail.com")
 		
 while True:
 	getAdc(0)
