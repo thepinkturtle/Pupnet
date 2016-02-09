@@ -5,7 +5,6 @@
 # Import our SpiDe wrapper and out sleep function
 
 import spidev
-import time
 import os
 
 # Establish SPI device on Bus 0, Device 0
@@ -22,15 +21,10 @@ def getAdc (channel):
 
 	# Filter data bits from returned bits
 	adcOut = ( (r[1] & 3) << 8 ) + r[2]
-	percent = int( round( adcOut / 10.24 ) )
 	
 	# Print out 0 - 1023 value and percentage
 	if (adcOut > 700 ):
-		print("ADC output: {0:4d}	Percentage: {1:3}%".format( adcOut, percent))
-		os.system("fswebcam -r 640x480 /home/pi/Pictures/Pupnet.jpg")	
-		time.sleep(0.1)
-#		os.system("mpack -s 'WOOF!' /home/pi/Pictures/Pupnet.jpg cheeriereptilian@gmail.com")
-		os.system("mpack -s 'WOOF!' /home/pi/Pictures/Pupnet.jpg 2537320033@messaging.sprintpcs.com")
+		os.system("echo 'WOOF! WOOF!' | mail 2537320033@messaging.sprintpcs.com")
 		
 while True:
 	getAdc(0)
